@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/src.dir/my_file.cpp.o"
-  "CMakeFiles/src.dir/my_file.cpp.o.d"
+  "CMakeFiles/src.dir/busplanner.cpp.o"
+  "CMakeFiles/src.dir/busplanner.cpp.o.d"
+  "CMakeFiles/src.dir/utils.cpp.o"
+  "CMakeFiles/src.dir/utils.cpp.o.d"
   "libsrc.a"
   "libsrc.pdb"
 )

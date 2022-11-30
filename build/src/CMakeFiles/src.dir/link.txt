@@ -1,2 +1,2 @@
-/usr/bin/ar qc libsrc.a CMakeFiles/src.dir/my_file.cpp.o
+/usr/bin/ar qc libsrc.a CMakeFiles/src.dir/busplanner.cpp.o CMakeFiles/src.dir/utils.cpp.o
 /usr/bin/ranlib libsrc.a

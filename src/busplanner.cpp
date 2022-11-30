@@ -12,27 +12,42 @@
 using namespace std;
 
 V2D csvToVector(const std::string & filename){
-    V2D result;
-    std::string full = file_to_string(filename);
-    std::vector<std::string> rows;
-    SplitString(full, '\n', rows);
-    for (int i=0; i<(int)rows.size(); i++){
-        std::vector<std::string> indiv;
-        SplitString(rows[i], ',', indiv);
-        for (int j=0; j<(int)indiv.size(); j++){
-            if (j>0) indiv[j] = TrimLeft(indiv[j]);
-        }
-        result.push_back(indiv);
-    }
+    V2D rtn;
     
-    return result;
+    string str = file_to_string(filename);
+    vector<string> split;
+
+    int splitNum = SplitString(str, '\n', split);
+
+    //for (auto e : split) {
+    //    std::cout << "Original split: " << e << std::endl;
+    //}
+
+    for (int i = 0; i < splitNum; i++) {
+        vector<string> splitStrings;
+        int splitStringsNum = SplitString(split[i], ',', splitStrings);
+
+        for (auto& e : splitStrings) {
+            e = Trim(e);
+            //std::cout << "Final split num: " << i << " " << e << std::endl;
+        }
+
+        rtn.push_back(splitStrings);
+    }
+
+
+    return rtn;
 }
 
 
 
 void printVector(const std::vector<std::string>& v){
+    int count = 0;
+    
     for (std::string s : v){
-        cout << s << ',';
+        cout << "Element " << count << ": " << s << ", ";
+        count++;
     }
     cout << '\n';
 }
+
