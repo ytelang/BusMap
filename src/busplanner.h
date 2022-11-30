@@ -6,6 +6,7 @@
 #pragma once
 
 #include <string>
+#include "utils.h"
 
 /**
  * Reads in an image, runs a simple "sketchify" algorithm on it to highlight
