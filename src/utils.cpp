@@ -16,12 +16,26 @@ std::string file_to_string(const std::string& filename){
 
 std::string TrimRight(const std::string & str) {
     std::string tmp = str;
-    return tmp.erase(tmp.find_last_not_of(" ") + 1);
+
+    size_t i = str.length() - 1;
+
+    while (str[i] < 32) {
+        i--;
+    }
+
+    return tmp.erase(i + 1);
 }
 
 std::string TrimLeft(const std::string & str) {
     std::string tmp = str;
-    return tmp.erase(0, tmp.find_first_not_of(" "));
+
+    size_t i = 0;
+
+    while (str[i] < 32) {
+        i++;
+    }
+
+    return tmp.erase(0, i);
 }
 
 std::string Trim(const std::string & str) {

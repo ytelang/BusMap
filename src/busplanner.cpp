@@ -5,11 +5,17 @@
 #pragma GCC diagnostic ignored "-Wuninitialized"
 #include <cstdlib>
 #include <cmath>
+#include <vector>
+#include <string>
 
 #include "cs225/PNG.h"
 #include "cs225/HSLAPixel.h"
 #include "busplanner.h"
-using namespace std;
+
+using std::string;
+using std::vector;
+using std::cout;
+using std::endl;
 
 V2D csvToVector(const std::string & filename){
     V2D rtn;
@@ -45,7 +51,7 @@ void printVector(const std::vector<std::string>& v){
     int count = 0;
     
     for (std::string s : v){
-        cout << "Element " << count << ": " << s << ", ";
+        cout << s << ", ";
         count++;
     }
     cout << '\n';
