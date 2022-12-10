@@ -131,6 +131,30 @@ src/fast:
 	cd "/workspaces/CS225/CS225 Project/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/build
 .PHONY : src/fast
 
+adj_list.o: adj_list.cpp.o
+.PHONY : adj_list.o
+
+# target to build an object file
+adj_list.cpp.o:
+	cd "/workspaces/CS225/CS225 Project/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/adj_list.cpp.o
+.PHONY : adj_list.cpp.o
+
+adj_list.i: adj_list.cpp.i
+.PHONY : adj_list.i
+
+# target to preprocess a source file
+adj_list.cpp.i:
+	cd "/workspaces/CS225/CS225 Project/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/adj_list.cpp.i
+.PHONY : adj_list.cpp.i
+
+adj_list.s: adj_list.cpp.s
+.PHONY : adj_list.s
+
+# target to generate assembly for a file
+adj_list.cpp.s:
+	cd "/workspaces/CS225/CS225 Project/build" && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/adj_list.cpp.s
+.PHONY : adj_list.cpp.s
+
 busplanner.o: busplanner.cpp.o
 .PHONY : busplanner.o
 
@@ -188,6 +212,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... src"
+	@echo "... adj_list.o"
+	@echo "... adj_list.i"
+	@echo "... adj_list.s"
 	@echo "... busplanner.o"
 	@echo "... busplanner.i"
 	@echo "... busplanner.s"

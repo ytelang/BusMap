@@ -7,9 +7,18 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
+
 #include "utils.h"
+#include "adj_list.h"
 typedef std::vector<std::vector<std::string>> V2D;
 
+using std::vector;
+using std::map;
+
 void printVector(const std::vector<std::string>& v);
+void printVector(const std::vector<int>& v);
 
 V2D csvToVector(const std::string & filename);
+
+Graph make_adj_list(const V2D &routes);

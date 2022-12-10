@@ -247,21 +247,43 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
   /usr/include/catch2/interfaces/catch_interfaces_testcase.hpp \
   /usr/include/catch2/internal/catch_preprocessor_remove_parens.hpp \
   ../src/busplanner.h \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
+  /usr/include/c++/11/bits/stl_heap.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/uniform_int_dist.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/c++/11/debug/unordered_map \
+  /usr/include/c++/11/debug/safe_unordered_container.h \
+  /usr/include/c++/11/debug/safe_unordered_base.h \
+  /usr/include/c++/11/debug/safe_unordered_container.tcc \
+  /usr/include/c++/11/debug/safe_local_iterator.h \
+  /usr/include/c++/11/debug/safe_local_iterator.tcc \
+  /usr/include/c++/11/pstl/execution_defs.h \
   ../src/utils.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/map \
   /usr/include/c++/11/bits/stl_tree.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
-  /usr/include/c++/11/bits/node_handle.h \
   /usr/include/c++/11/bits/stl_map.h \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/uses_allocator.h \
-  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/stl_multimap.h \
-  /usr/include/c++/11/bits/erase_if.h \
   /usr/include/c++/11/debug/map \
   /usr/include/c++/11/debug/map.h \
   /usr/include/c++/11/debug/multimap.h \
@@ -276,21 +298,82 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  ../lib/cs225/PNG.h \
-  ../lib/cs225/HSLAPixel.h \
+  ../src/adj_list.h \
   /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/c++/11/bits/sstream.tcc \
+  /usr/include/c++/11/queue \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/debug/deque \
+  /usr/include/c++/11/bits/stl_queue.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/debug/list \
+  /usr/include/c++/11/climits \
+  /usr/lib/llvm-14/lib/clang/14.0.0/include/limits.h \
+  /usr/include/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+  /usr/include/linux/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+  /usr/include/c++/11/iomanip \
+  /usr/include/c++/11/locale \
+  /usr/include/c++/11/bits/locale_facets_nonio.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/11/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/11/bits/locale_conv.h \
+  /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/bits/quoted_string.h \
+  ../lib/cs225/PNG.h \
+  ../lib/cs225/HSLAPixel.h
 
+
+../lib/cs225/HSLAPixel.h:
+
+/usr/include/c++/11/bits/unique_ptr.h:
+
+/usr/include/c++/11/bits/locale_conv.h:
+
+/usr/include/libintl.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
+
+/usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/x86_64-linux-gnu/bits/local_lim.h:
+
+/usr/include/c++/11/debug/list:
+
+/usr/include/c++/11/bits/allocated_ptr.h:
+
+/usr/include/c++/11/list:
+
+/usr/include/c++/11/debug/deque:
+
+/usr/include/c++/11/bits/deque.tcc:
+
+/usr/include/c++/11/deque:
+
+/usr/include/c++/11/queue:
 
 /usr/include/c++/11/sstream:
 
-../lib/cs225/HSLAPixel.h:
+../src/adj_list.h:
 
 /usr/include/c++/11/bits/fstream.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
 
-/usr/include/c++/11/fstream:
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
 
 /usr/include/c++/11/debug/multiset.h:
 
@@ -304,15 +387,53 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/c++/11/debug/multimap.h:
 
+/usr/include/c++/11/bits/locale_facets_nonio.tcc:
+
 /usr/include/c++/11/debug/map.h:
 
 /usr/include/c++/11/debug/map:
 
 /usr/include/c++/11/bits/stl_multimap.h:
 
-/usr/include/c++/11/bits/invoke.h:
+/usr/include/c++/11/bits/stl_map.h:
 
-/usr/include/c++/11/bits/uses_allocator.h:
+/usr/include/c++/11/bits/stl_tree.h:
+
+/usr/include/c++/11/map:
+
+/usr/include/c++/11/bits/istream.tcc:
+
+/usr/include/c++/11/istream:
+
+../src/utils.h:
+
+/usr/include/c++/11/debug/safe_local_iterator.tcc:
+
+/usr/include/c++/11/debug/safe_local_iterator.h:
+
+/usr/include/c++/11/debug/safe_unordered_container.tcc:
+
+/usr/include/c++/11/fstream:
+
+/usr/include/c++/11/debug/safe_unordered_container.h:
+
+/usr/include/c++/11/debug/unordered_map:
+
+/usr/include/c++/11/bits/unordered_map.h:
+
+/usr/include/c++/11/iostream:
+
+/usr/include/c++/11/bits/node_handle.h:
+
+/usr/include/c++/11/bits/hashtable_policy.h:
+
+/usr/include/c++/11/bits/hashtable.h:
+
+/usr/include/c++/11/unordered_map:
+
+/usr/include/c++/11/bits/refwrap.h:
+
+/usr/include/c++/11/bits/invoke.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
@@ -344,9 +465,13 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/c++/11/ext/concurrence.h:
 
+/usr/include/linux/limits.h:
+
 /usr/include/c++/11/bits/basic_string.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/c++/11/bits/stl_deque.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
@@ -364,9 +489,9 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/x86_64-linux-gnu/sys/select.h:
 
-/usr/include/c++/11/cctype:
+/usr/include/c++/11/iomanip:
 
-../src/utils.h:
+/usr/include/c++/11/cctype:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
@@ -403,6 +528,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 /usr/include/c++/11/debug/functions.h:
 
 /usr/include/c++/11/bits/codecvt.h:
+
+/usr/include/c++/11/bits/enable_special_members.h:
 
 /usr/include/c++/11/bits/basic_ios.tcc:
 
@@ -446,6 +573,10 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
+/usr/include/c++/11/bits/std_function.h:
+
+/usr/include/c++/11/bits/stl_tempbuf.h:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
 
 /usr/include/c++/11/bits/functexcept.h:
@@ -456,7 +587,11 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
+/usr/include/c++/11/debug/safe_unordered_base.h:
+
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 
 /usr/include/catch2/interfaces/catch_interfaces_enum_values_registry.hpp:
 
@@ -470,11 +605,11 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/c++/11/bits/range_access.h:
 
-/usr/include/c++/11/map:
-
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 ../tests/tests.cpp:
+
+/usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
 /usr/include/c++/11/string:
 
@@ -494,19 +629,15 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
-/usr/include/c++/11/iostream:
-
-/usr/include/c++/11/bits/node_handle.h:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
-/usr/include/linux/errno.h:
-
 /usr/include/c++/11/debug/debug.h:
 
 /usr/include/features-time64.h:
+
+/usr/include/c++/11/bits/stl_list.h:
 
 /usr/include/catch2/catch_user_config.hpp:
 
@@ -530,6 +661,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/catch2/catch_assertion_info.hpp:
 
+/usr/lib/llvm-14/lib/clang/14.0.0/include/limits.h:
+
 /usr/include/catch2/internal/catch_result_type.hpp:
 
 /usr/include/c++/11/bits/stringfwd.h:
@@ -537,6 +670,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 /usr/include/c++/11/bits/stl_function.h:
 
 /usr/include/c++/11/bits/memoryfwd.h:
+
+/usr/include/c++/11/bits/list.tcc:
 
 /usr/include/catch2/catch_test_macros.hpp:
 
@@ -576,9 +711,15 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/asm-generic/errno-base.h:
 
+/usr/include/linux/errno.h:
+
+/usr/include/c++/11/functional:
+
 /usr/include/wchar.h:
 
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
+
+/usr/include/c++/11/climits:
 
 /usr/include/c++/11/bits/sstream.tcc:
 
@@ -608,6 +749,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
+/usr/include/c++/11/bits/stl_queue.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
@@ -632,9 +775,9 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/c++/11/type_traits:
 
-/usr/include/c++/11/bits/stl_tree.h:
-
 /usr/include/c++/11/tuple:
+
+/usr/include/c++/11/locale:
 
 /usr/include/ctype.h:
 
@@ -668,6 +811,10 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
+/usr/include/c++/11/ext/aligned_buffer.h:
+
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
 /usr/include/c++/11/bits/erase_if.h:
 
 /usr/include/c++/11/bits/ptr_traits.h:
@@ -676,15 +823,9 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/endian.h:
 
-/usr/include/x86_64-linux-gnu/sys/types.h:
-
-/usr/include/c++/11/ext/aligned_buffer.h:
-
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
 /usr/include/alloca.h:
-
-/usr/include/c++/11/bits/std_abs.h:
 
 /usr/include/c++/11/cstdio:
 
@@ -716,6 +857,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
+/usr/include/c++/11/bits/quoted_string.h:
+
 ../src/busplanner.h:
 
 /usr/include/c++/11/bits/basic_string.tcc:
@@ -723,6 +866,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 /usr/include/c++/11/debug/safe_base.h:
 
 /usr/include/c++/11/cassert:
+
+/usr/include/c++/11/bits/stl_algo.h:
 
 /usr/include/catch2/internal/catch_decomposer.hpp:
 
@@ -744,6 +889,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/c++/11/optional:
 
+/usr/include/limits.h:
+
 /usr/include/c++/11/bits/stl_relops.h:
 
 /usr/include/c++/11/system_error:
@@ -753,6 +900,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 /usr/include/c++/11/bits/nested_exception.h:
 
 /usr/include/c++/11/debug/safe_container.h:
+
+/usr/include/c++/11/bits/uniform_int_dist.h:
 
 /usr/include/c++/11/bits/basic_ios.h:
 
@@ -780,6 +929,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
 
+/usr/include/c++/11/pstl/glue_algorithm_defs.h:
+
 /usr/include/c++/11/stdexcept:
 
 /usr/include/string.h:
@@ -806,6 +957,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/catch2/internal/catch_meta.hpp:
 
+/usr/include/c++/11/algorithm:
+
 /usr/include/catch2/catch_message.hpp:
 
 /usr/include/catch2/internal/catch_stream_end_stop.hpp:
@@ -826,6 +979,8 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/catch2/internal/catch_config_counter.hpp:
 
+/usr/include/c++/11/bits/locale_facets_nonio.h:
+
 /usr/include/catch2/internal/catch_compiler_capabilities.hpp:
 
 /usr/include/catch2/internal/catch_test_registry.hpp:
@@ -834,8 +989,12 @@ CMakeFiles/test.dir/tests/tests.cpp.o: ../tests/tests.cpp \
 
 /usr/include/catch2/internal/catch_preprocessor_remove_parens.hpp:
 
-/usr/include/c++/11/istream:
+/usr/include/c++/11/pstl/execution_defs.h:
 
-/usr/include/c++/11/bits/istream.tcc:
+/usr/include/c++/11/bits/algorithmfwd.h:
 
-/usr/include/c++/11/bits/stl_map.h:
+/usr/include/c++/11/bits/std_abs.h:
+
+/usr/include/c++/11/bits/stl_heap.h:
+
+/usr/include/c++/11/bits/uses_allocator.h:
