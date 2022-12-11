@@ -3,6 +3,7 @@
 #include "adj_list.h"
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 using std::cout;
@@ -10,10 +11,8 @@ using std::endl;
 using std::vector;
 using std::string;
 
-int main() {
-
+int main(int argc, char** argv) {
     V2D data = csvToVector("/workspaces/cs225/final_project/BusDataWeighted.csv"); // change this to the correct file path
-
     /*
     for (auto v : data) {
         //vector<string> vec;
@@ -59,6 +58,28 @@ int main() {
 
     Graph g = make_adj_list(busRoutes);
     vector<Vertex> vertices = g.getVertices();
+    Vertex end; // flip user start and end since we output in reverse order
+    Vertex start;
+    if(argc != 3)
+    {
+        printVector(vertices);
+        std::cout << "Input ./main 'Start Location' 'End Location'" << std::endl;
+        return 0;
+    }
+    end = argv[1];
+    start = argv[2];
+    if(std::find(vertices.begin(),vertices.end(),end) == vertices.end())
+    {
+        printVector(vertices);
+        std::cout << "Start Location not valid, please enter a valid stop\n";
+        return 0;
+    }
+    if(std::find(vertices.begin(),vertices.end(),start) == vertices.end())
+    {
+        printVector(vertices);
+        std::cout << "End Location not valid, please enter a valid stop\n";
+        return 0;
+    }
     /*
     for (auto vertex : vertices) {
         vector<Vertex> adj_vertices = g.getAdjacent(vertex);
@@ -69,13 +90,22 @@ int main() {
     }    
     std::cout << "\n\n\n\n\n\n\n";
     */
-    Vertex end = "Vet-Med"; // flip user start and end since we output in reverse order
-    Vertex start = "Plastipak";
+    
     auto path = find_path(g,start,end);
+    auto compressed = compress_path(path);
+    int overall_weight = 0;
     for(auto edge : path)
     {
         std::cout << g.getEdgeLabel(edge.source,edge.dest) << " | from " << edge.source << " to " << edge.dest << " with weight " << g.getEdgeWeight(edge.source, edge.dest) << std::endl;
+        overall_weight += g.getEdgeWeight(edge.source, edge.dest);
     }
-    
+    std::cout << overall_weight << "\n\n\n";
+    overall_weight = 0;
+    for(auto edge : compressed)
+    {
+        std::cout << edge.getLabel() << " | from " << edge.source << " to " << edge.dest << " with weight " << edge.getWeight() << std::endl;
+        overall_weight += edge.getWeight();
+    }
+    std::cout << overall_weight << "\n";
     return 0;
 }

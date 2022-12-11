@@ -26,3 +26,5 @@ V2D csvToVector(const std::string & filename);
 Graph make_adj_list(const V2D &routes);
 
 auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>;
+
+auto compress_path(std::vector<Edge> path) -> std::vector<Edge>;

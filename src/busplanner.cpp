@@ -109,33 +109,37 @@ auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>
     size_t num_vert = g.getVertices().size();
     std::unordered_map<Vertex, std::pair<Vertex, int>> distances; // Vertex, Vertex, int
     distances.insert(std::make_pair(start,std::make_pair(start,0)));
+    for(Vertex neighbor : g.getAdjacent(start))
+    {
+        distances.insert(std::make_pair(neighbor,std::make_pair(start,g.getEdgeWeight(start,neighbor))));
+    }
     Vertex current = start;
     while(current != end)
     {
-        Vertex going_to;
-        Vertex source;
         int minimum_edge = INT_MAX;
-        for(Vertex v : visited)
+        Vertex going_to;
+        for(auto pair : distances)
         {
-            auto adj = g.getAdjacent(v);
-            for(Vertex neighbor : adj)
+            if(pair.second.second < minimum_edge && visited.find(pair.first) == visited.end())
             {
-                if(visited.find(neighbor) != visited.end())
-                {
-                    continue;
-                }
-                int current_distance = g.getEdgeWeight(v, neighbor);
-                if(current_distance <= minimum_edge)
-                {
-                    minimum_edge = current_distance;
-                    source = v;
-                    going_to = neighbor;
-                }
+                going_to = pair.first;
+                minimum_edge = pair.second.second;
             }
-        } // going to will be next current, source is where we go from
+        }
         visited.insert(going_to);
-        int overall_distance = distances[source].second+minimum_edge;
-        distances.insert(std::make_pair(going_to, std::make_pair(source, overall_distance)));
+        for(Vertex neighbor : g.getAdjacent(going_to))
+        {
+            if(distances.find(neighbor) == distances.end())
+                distances.insert(std::make_pair(neighbor,std::make_pair(going_to,distances[going_to].second + g.getEdgeWeight(going_to,neighbor)))); // this node has not yet been in the dictionary
+            else
+            {
+                int current_distance_to_neighbor = distances[neighbor].second;
+                int new_distance_to_neighbor = distances[going_to].second + g.getEdgeWeight(going_to,neighbor);
+                if(current_distance_to_neighbor > new_distance_to_neighbor)
+                    distances[neighbor] = std::make_pair(going_to,new_distance_to_neighbor);
+                
+            }
+        }
         current = going_to;
     }
     // now current has reached end, should have guaranteed found a path (assume one connected component)
@@ -145,6 +149,33 @@ auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>
         Vertex backtrack = distances[current].first;
         rt.push_back(g.getEdge(current,backtrack));
         current = backtrack;
+    }
+    //rt = compress_path(rt);
+    return rt;
+}
+
+auto compress_path(std::vector<Edge> path) -> std::vector<Edge>
+{
+    std::vector<Edge> rt;
+    std::string previous_bus = path[0].getLabel();
+    for(size_t i = 0; i < path.size(); i++)
+    {
+        int weight = 0;
+        Vertex start = path[i].source;
+        Vertex end = path[i].dest;
+        while(i < path.size() && path[i].getLabel() == previous_bus)
+        {
+            weight += path[i].getWeight();
+            end = path[i].dest;
+            i++;
+        }
+        // path[i-1] is last path with previous bus
+
+        Edge to_add(start, end, weight, previous_bus);
+        rt.push_back(to_add);
+        if(i < path.size())
+            previous_bus = path[i].getLabel();
+        i--;
     }
     return rt;
 }
