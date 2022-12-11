@@ -69,12 +69,12 @@ int main() {
     }    
     std::cout << "\n\n\n\n\n\n\n";
     */
-    Vertex start = "High Cross and Kyle";
-    Vertex end = "Champaign Walmart";
+    Vertex end = "Vet-Med"; // flip user start and end since we output in reverse order
+    Vertex start = "Plastipak";
     auto path = find_path(g,start,end);
     for(auto edge : path)
     {
-        std::cout << g.getEdgeLabel(edge.source,edge.dest) << " | from " << edge.source << " to " << edge.dest << std::endl;
+        std::cout << g.getEdgeLabel(edge.source,edge.dest) << " | from " << edge.source << " to " << edge.dest << " with weight " << g.getEdgeWeight(edge.source, edge.dest) << std::endl;
     }
     
     return 0;
