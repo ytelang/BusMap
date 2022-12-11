@@ -90,6 +90,7 @@ Graph make_adj_list(const V2D &routes) {
                     int currWeight = g.getEdgeWeight(startVertex, endVertex);
                     if (currentDistance < currWeight) {
                         Edge e = g.setEdgeWeight(startVertex, endVertex, currentDistance);
+                        Edge e2 = g.setEdgeLabel(startVertex, endVertex, bus);
                     } 
                 }
                 
@@ -99,4 +100,51 @@ Graph make_adj_list(const V2D &routes) {
     }
 
     return g;
+}
+
+auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>
+{
+    std::unordered_set<Vertex> visited;
+    visited.insert(start);
+    size_t num_vert = g.getVertices().size();
+    std::unordered_map<Vertex, std::pair<Vertex, int>> distances; // Vertex, Vertex, int
+    distances.insert(std::make_pair(start,std::make_pair(start,0)));
+    Vertex current = start;
+    while(current != end)
+    {
+        Vertex going_to;
+        Vertex source;
+        int minimum_edge = INT_MAX;
+        for(Vertex v : visited)
+        {
+            auto adj = g.getAdjacent(v);
+            for(Vertex neighbor : adj)
+            {
+                if(visited.find(neighbor) != visited.end())
+                {
+                    continue;
+                }
+                int current_distance = g.getEdgeWeight(v, neighbor);
+                if(current_distance <= minimum_edge)
+                {
+                    minimum_edge = current_distance;
+                    source = v;
+                    going_to = neighbor;
+                }
+            }
+        } // going to will be next current, source is where we go from
+        visited.insert(going_to);
+        int overall_distance = distances[source].second+minimum_edge;
+        distances.insert(std::make_pair(going_to, std::make_pair(source, overall_distance)));
+        current = going_to;
+    }
+    // now current has reached end, should have guaranteed found a path (assume one connected component)
+    std::vector<Edge> rt;
+    while(current != start)
+    {
+        Vertex backtrack = distances[current].first;
+        rt.push_back(g.getEdge(current,backtrack));
+        current = backtrack;
+    }
+    return rt;
 }

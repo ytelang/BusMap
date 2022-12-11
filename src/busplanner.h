@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <queue>
+#include <unordered_set>
 
 #include "utils.h"
 #include "adj_list.h"
@@ -22,3 +24,5 @@ void printVector(const std::vector<int>& v);
 V2D csvToVector(const std::string & filename);
 
 Graph make_adj_list(const V2D &routes);
+
+auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>;
