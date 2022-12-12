@@ -25,7 +25,13 @@ int main(int argc, char** argv) {
         cout << v.size() << endl;
     }
     */
-    
+    V2D stopCoordinates = csvToVector("../Data/BusCoordinates.csv");
+    std::unordered_map<std::string, std::pair<int,int>> coords;
+    for(size_t i = 1; i < stopCoordinates.size(); i++)
+    {
+        auto row = stopCoordinates[i];
+        coords.insert(std::make_pair(row[0],std::make_pair(std::stoi(row[1]),std::stoi(row[2]))));
+    }
     V2D busRoutes;
 
     for (size_t j = 0; j < data[0].size(); j++) {

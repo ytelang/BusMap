@@ -32,13 +32,18 @@ V2D csvToVector(const std::string & filename){
     for (int i = 0; i < splitNum; i++) {
         vector<string> splitStrings;
         int splitStringsNum = SplitString(split[i], ',', splitStrings);
-
+        bool add = true;
         for (auto& e : splitStrings) {
+            if(e == "")
+            {
+                add = false;
+                break;
+            }
             e = Trim(e);
             //std::cout << "Final split num: " << i << " " << e << std::endl;
         }
-
-        rtn.push_back(splitStrings);
+        if(add)
+            rtn.push_back(splitStrings);
     }
 
 
