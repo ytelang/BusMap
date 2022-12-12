@@ -22,17 +22,15 @@
   <summary><h2>Table of Contents</h2></summary>
   <ol>
     <li><a href = "#summary">Summary</a></li>
+    <li><a href = "#development-process">Development Process</a></li>
     <li>
       <a href = "#github-organization">GitHub Organization</a>
-      <ul>
-        <li><a href = "#inspiration">Inspiration</a></li>
-      </ul>
     </li>
     <li>
       <a href = "#getting-started">Getting Started</a>
       <ul>
-        <li><a href = "#download-instructions">Download Instructions</a></li>
-        <li><a href = "#notes-on-gameplay">Notes On Gameplay</a></li>
+        <li><a href = "#running-instructions">Running Instructions</a></li>
+        <li><a href = "#misc-notes">Misc. Notes</a></li>
       </ul>
     </li>
   </ol>
@@ -42,28 +40,42 @@
 
 <!--- Summary of presentation introduction --->
 ## Summary
-Our project is a C++ program called BusMap, which takes in 2 bus stops from the Champaign–Urbana Mass Transit District, and displays the most optimal path of buses to take to get from the start input to the destination input. It also displays a map with all of the MTD stops, and highlights the stops in the path between the inputted destinations. 
+Our project is a C++ program called BusMap, which takes in 2 bus stops from the Champaign–Urbana Mass Transit District, and displays the most optimal path of buses to take to get from the start input to the destination input. It also displays a map with all of the MTD stops, and highlights the stops in the path between the inputted destinations. To do this, it employs all of our proposed algorithms, which are BFS, Dijkstra's, and the Graphic Output of Graph algorithm. 
 
 
 <!--- Development Process --->
 ## Development Process
-To do this, we first created CSV files with data on the buses, including their locations, start/end times, the stops they go to, etc. Using this data about the time it takes to get from one stop to another, we assigned each connected stop a weight as the time it would take to get from one to the other. For example, if it took 5 minutes to get from Stop A to Stop B (it would take the same amount of time to go from Stop B to Stop A), the edge between the two stops would be weighted as 5. 
+We first created CSV files with data on the buses, including their locations, start/end times, the stops they go to, etc. Using this data about the time it takes to get from one stop to another, we assigned each connected stop a weight as the time it would take to get from one to the other. For example, if it took 5 minutes to get from Stop A to Stop B (it would take the same amount of time to go from Stop B to Stop A), the edge between the two stops would be weighted as 5. 
 
 We then parsed this data in our program and created an undirected, weighted Graph structure with bus stops as vertices and buses as edges. Each edge had its respective weight as described above. This would then allow us to use our proposed algorithm (Dijkstra's) to find the best path to take between the two inputted stops.
 
 Using our graph containing all of the parsed data about the buses, we then implemented Dijkstra's algorithm to find the shortest path between two inputted stops. We also compressed this path to account for multiple stops on the same bus, and then stored it in a Path object, which contains a vector of the stops and the estimated weight (time) it would take to get from one stop to another.
 
-Next, using the parsed data about the stop locations on a map of the Champaign area, we created a PNG containing this data and highlighted the stops that the most optimal path takes on the map (Graphic Output of Graph algorithm). Finally, we used BFS to find the shortest path between the stops on the map, then highlighting the path that would be taken to get from one to another.
+Next, using the parsed data about the stop locations on a map of the Champaign area, we created a PNG containing this data and highlighted the stops that the most optimal path takes on the map (Graphic Output of Graph algorithm). Finally, we used BFS to find the shortest path between the stops on the map, then highlighting the path that would be taken to get from one to another. This map is then outputted to a PNG that can be displayed to the user.
+
+Finally, throughout this process, we have beem testing each component to make sure the data and results are accurate. This includes having assertions for the parsed data, comparing the output of our path finding algorithm to our manually calculated path (using multiple inputs), and confirming that the drawn paths match up on the outputted PNG.
 
 
-<!--- Technical architecture of project --->
+<!--- Github Organization --->
 ## GitHub Organization
-### Inspiration
-When determining what kind of project to do, we wanted to choose something that we would not only learn from but was also fun. Run 4 was the perfect choice for this. Most of us did not have much game development experience, so we would learn a lot from creating our first game. Additionally, although Yash, Arthur, and Alex didn't have prior Unity experience, Charlie did. Hence, we felt comfortable taking on this challenge. In the end, we learned a lot about not just how to code a game, but also how to organize and complete a project in a timely fashion (the challenges we ran into are described in more detail in our "Development" link at the top of this page). Meanwhile, this project was super fun because we got to create something that we can share with and enjoy playing with others.
+
+The `Documents` folder contains our project proposal and team contract.
+
+The `Data` folder contains our created CSVs and the base image of the map that we use to display the path.
+
+The `lib` folder contains provided CS225 classes and methods such as `PNG.h` and `HSLAPixel.h` that are used to read from and write to PNG files.
+
+The `tests` folder contains all of our created test cases as described in our development process.
+
+The `src` folder contains the majority of our code, where we have our graph structure in `Graph.h`, and our functions to parse data, build/compress our path, and output the path to a PNG in `busplanner.h`. This folder also contains the provided `utils.h`, which lets us easily read from files, split by string, and trim strings.
+
+The `entry` folder contains `main.cpp`, which is where we use the functions and structures that we created to parse the data, specify user input, build and compress the path, and write to the outputted PNG.
+
+The `build` and `.vscode` folder contain CMake build files that are created when building and running the program. Instructions to do this are in the following section. 
 
 <!--- Provides reproducible installation and running instructions --->
 ## Getting Started
-### Download Instructions
+### Running Instructions
 1. Go to [RUN 4](https://drive.google.com/drive/u/1/folders/13qCTqrXj8mvp2V7zyenpdeTcxGncnVcA)
 2. Download the zip file (Build.zip)
 3. Unzip/extract the zip file's contents and save the contents locally onto your computer
@@ -71,7 +83,7 @@ When determining what kind of project to do, we wanted to choose something that 
 
 
 
-### Notes On GamePlay
+### Misc. Notes
 - How To Win: Complete all of the objectives before you die.
 
 - Screen
