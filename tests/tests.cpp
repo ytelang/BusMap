@@ -99,8 +99,12 @@ TEST_CASE("Find (Compressed) Path", "[weight=10]") {
   V2D data = csvToVector("../Data/BusDataWeighted.csv");
   V2D busRoutes = get_bus_routes(data);
   Graph g = make_adj_list(busRoutes);
+
+  Path path = find_path(g,g.getVertices()[0],g.getVertices()[0]);
+  REQUIRE(path.weight_ == 0);
+  REQUIRE(path.path_.size() == 0);
   
-  auto path = find_path(g,"Illinois Terminal","Butzow and Lierman"); // one bus, multiple stops
+  path = find_path(g,"Illinois Terminal","Butzow and Lierman"); // one bus, multiple stops
   REQUIRE(path.weight_ == 19);
   REQUIRE(path.path_.size() == 1);
   REQUIRE(path.path_[0].source == "Butzow and Lierman");
