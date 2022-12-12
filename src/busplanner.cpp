@@ -17,6 +17,17 @@ using std::vector;
 using std::cout;
 using std::endl;
 
+
+std::ostream& operator<<(std::ostream& os, const Path& path)
+{
+    for(auto edge : path.path_)
+    {
+        os << edge.getLabel() << " from " << edge.source << " to " << edge.dest << " with weight " << edge.getWeight() << "\n";
+    }
+    os << "Overall Travel Time (Est): " << path.weight_ << std::endl;
+    return os;
+}
+
 V2D csvToVector(const std::string & filename){
     V2D rtn;
     
@@ -74,6 +85,35 @@ void printVector(const std::vector<int>& v){
     }
 }
 
+auto get_bus_routes(const V2D& data) -> V2D
+{
+    V2D busRoutes;
+    for (size_t j = 0; j < data[0].size(); j++) {
+        vector<string> v;
+        for (size_t i = 0; i < data.size(); i++) {
+            
+            if (data[i][j] != "NA") {
+                //std::cout << data[i][j] << " , length is: " << data[i][j].length() << std::endl;
+                v.push_back(data[i][j]);
+            }
+            
+        }
+        busRoutes.push_back(v);
+    }
+    return busRoutes;
+}
+
+auto get_bus_coordinates(const V2D& data) -> std::unordered_map<std::string, std::pair<int,int>>
+{
+    std::unordered_map<std::string, std::pair<int,int>> coords;
+    for(size_t i = 1; i < data.size(); i++)
+    {
+        auto row = data[i];
+        coords.insert(std::make_pair(row[0],std::make_pair(std::stoi(row[1]),std::stoi(row[2]))));
+    }
+    return coords;
+}
+
 Graph make_adj_list(const V2D &routes) {
     Graph g(true);
 
@@ -107,12 +147,16 @@ Graph make_adj_list(const V2D &routes) {
     return g;
 }
 
-auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>
+auto find_path(Graph g, Vertex start, Vertex end) -> Path
 {
-    if(start == end)
+    Path rt;
+    std::vector<Edge> rt_path;
+    rt.path_ = rt_path;
+    rt.weight_ = 0;
+    auto vertices = g.getVertices();
+    if(start == end || std::find(vertices.begin(), vertices.end(), start) == vertices.end() || std::find(vertices.begin(), vertices.end(), end) == vertices.end())
     {
-        std::vector<Edge> rt;
-        return rt;
+        return rt; // check both endpoints exist and are not each other
     }
     std::unordered_set<Vertex> visited;
     visited.insert(start);
@@ -153,20 +197,24 @@ auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>
         current = going_to;
     }
     // now current has reached end, should have guaranteed found a path (assume one connected component)
-    std::vector<Edge> rt;
     while(current != start)
     {
         Vertex backtrack = distances[current].first;
-        rt.push_back(g.getEdge(current,backtrack));
+        rt.path_.push_back(g.getEdge(current,backtrack));
+        rt.weight_ += g.getEdgeWeight(current,backtrack);
         current = backtrack;
     }
     //rt = compress_path(rt);
+    rt = compress_path(rt.path_);
     return rt;
 }
 
-auto compress_path(std::vector<Edge> path) -> std::vector<Edge>
+auto compress_path(std::vector<Edge> path) -> Path
 {
-    std::vector<Edge> rt;
+    Path rt;
+    std::vector<Edge> rt_path;
+    rt.path_ = rt_path;
+    rt.weight_ = 0;
     if(path.empty())
     {
         return rt;
@@ -186,7 +234,8 @@ auto compress_path(std::vector<Edge> path) -> std::vector<Edge>
         // path[i-1] is last path with previous bus
 
         Edge to_add(start, end, weight, previous_bus);
-        rt.push_back(to_add);
+        rt.path_.push_back(to_add);
+        rt.weight_ += weight;
         if(i < path.size())
             previous_bus = path[i].getLabel();
         i--;

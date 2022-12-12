@@ -28,42 +28,116 @@ bool fileExists(std::string fileName) {
 //
 // Basic tests
 //
-TEST_CASE("Test Bus Yellow 1", "[weight=2]") {
+TEST_CASE("Read Bus Data", "[weight=1]") {
+  REQUIRE(fileExists("../Data/BusDataWeighted.csv"));
+  V2D data = csvToVector("../Data/BusDataWeighted.csv");
+  REQUIRE(data[0][0] == "Yellow 1");
+  auto last_row = data[data.size()-1];
+  REQUIRE(last_row[last_row.size()-1] == "-1");
+  REQUIRE(data.size() == 12);
+  REQUIRE(data[2].size() == 54);
+}
 
-  V2D data = csvToVector("/workspaces/CS225/CS225 Project/BusData.csv");
+TEST_CASE("Read Bus Coordinates", "[weight=1]") {
 
-  V2D busRoutes;
+  REQUIRE(fileExists("../Data/BusCoordinates.csv"));
+  V2D data = csvToVector("../Data/BusCoordinates.csv");
+  REQUIRE(data[0][0] == "Name");
+  auto last_row = data[data.size()-1];
+  REQUIRE(last_row[last_row.size()-1] == "813");
+  REQUIRE(data.size() == 68);
+  REQUIRE(data[2].size() == 3);
+}
 
-  for (size_t j = 0; j < data[0].size(); j++) {
-      vector<std::string> v;
-      for (size_t i = 0; i < data.size(); i++) {
-          
-          if (data[i][j] != "NA" && data[i][j] != "IGNORE") {
-              //std::cout << data[i][j] << std::endl;
-              v.push_back(data[i][j]);
-          }
-          
-      }
-      busRoutes.push_back(v);
+TEST_CASE("Make Adjacency List", "[weight=10]") {
+  REQUIRE(fileExists("../Data/BusDataWeighted.csv"));
+  V2D data = csvToVector("../Data/BusDataWeighted.csv");
+  V2D busRoutes = get_bus_routes(data);
+  Graph g = make_adj_list(busRoutes);
+
+  std::unordered_set<Vertex> water_survey_neighbors{"University and Wright", "Transit Plaza", "Lot E-14"};
+  auto water_neighbors = g.getAdjacent("Water Survey");
+  for(Vertex neighbor : water_neighbors)
+  {
+    REQUIRE(water_survey_neighbors.find(neighbor) != water_survey_neighbors.end());
   }
-
-  //REQUIRE(1 == 1);
-  //REQUIRE(strcmp("Hello", "Hello") == 0);
-  std::string a = "Yellow 1";
-  //std::cout << typeid(a).name() << std::endl;
-  //std::cout << typeid(busRoutes[0][0]).name() << std::endl;
-  REQUIRE(busRoutes[0][0] == a);
-
-  /*
-  for (size_t i = 0; i < busRoutes[0][0].size(); i++) {
-    std::cout << busRoutes[0][0][i] << std::endl;
+  std::unordered_set<Vertex> u_and_cg_neighbors{"Plastipak", "Round Barn Road", "Park and Wright", "Lincoln Square", "Illinois Terminal", "Butzow and Lierman", "US and 150 & Dodson Dr"};
+  auto ucg_neighbors = g.getAdjacent("University and Cottage Grove");
+  for(Vertex neighbor : ucg_neighbors)
+  {
+    REQUIRE(u_and_cg_neighbors.find(neighbor) != u_and_cg_neighbors.end());
   }
+  std::unordered_set<Vertex> vet_med_neighbors{"Vet-Med", "Florida Ave. Residence Hall", "Illini Union", "Pennsylvania Ave. Residence Hall"};
+  auto vm_neighbors = g.getAdjacent("Vet-Med");
+  for(Vertex neighbor : vm_neighbors)
+  {
+    REQUIRE(vet_med_neighbors.find(neighbor) != vet_med_neighbors.end());
+  }
+}
 
-  std::cout << busRoutes[0][0].length() << std::endl;
-  std::cout << busRoutes[0][0] << std::endl;
-  std::cout << a.length() << std::endl;
-  */
+TEST_CASE("Find Invalid Path", "[weight=5]") {
+  REQUIRE(fileExists("../Data/BusDataWeighted.csv"));
+  V2D data = csvToVector("../Data/BusDataWeighted.csv");
+  V2D busRoutes = get_bus_routes(data);
+  Graph g = make_adj_list(busRoutes);
+  
+  auto path = find_path(g,"Invalid Stop",g.getVertices()[0]);
+  REQUIRE(path.weight_ == 0);
+  REQUIRE(path.path_.size() == 0);
 
-  std::vector<string> Yellow1Answer {"Yellow 1", "Savoy Walmart", "The Place at 117", "Fox and Windsor", "Lot E-14", "Transit Plaza", "Illnois Terminal", "Market Place", "Champaign Walmart"};
-	REQUIRE(busRoutes[0] == Yellow1Answer);
+  path = find_path(g,g.getVertices()[0],"Invalid Stop");
+  REQUIRE(path.weight_ == 0);
+  REQUIRE(path.path_.size() == 0);
+
+  path = find_path(g,"Invalid Stop","Invalid Stop");
+  REQUIRE(path.weight_ == 0);
+  REQUIRE(path.path_.size() == 0);
+}
+
+TEST_CASE("Find (Compressed) Path", "[weight=10]") {
+  REQUIRE(fileExists("../Data/BusDataWeighted.csv"));
+  V2D data = csvToVector("../Data/BusDataWeighted.csv");
+  V2D busRoutes = get_bus_routes(data);
+  Graph g = make_adj_list(busRoutes);
+  
+  auto path = find_path(g,"Illinois Terminal","Butzow and Lierman"); // one bus, multiple stops
+  REQUIRE(path.weight_ == 19);
+  REQUIRE(path.path_.size() == 1);
+  REQUIRE(path.path_[0].source == "Butzow and Lierman");
+  REQUIRE(path.path_[0].dest == "Illinois Terminal");
+  REQUIRE(path.path_[0].getLabel() == "Orange 6");
+
+  path = find_path(g,"Savoy Walmart","Market Place"); // several different buses, multiple stops
+  REQUIRE(path.weight_ == 51);
+  REQUIRE(path.path_.size() == 3);
+  REQUIRE(path.path_[0].source == "Market Place");
+  REQUIRE(path.path_[0].dest == "Illinois Terminal");
+  REQUIRE(path.path_[0].getLabel() == "Red 2");
+
+  REQUIRE(path.path_[1].source == "Illinois Terminal");
+  REQUIRE(path.path_[1].dest == "Lot E-14");
+  REQUIRE(path.path_[1].getLabel() == "Navy 14");
+
+  REQUIRE(path.path_[2].source == "Lot E-14");
+  REQUIRE(path.path_[2].dest == "Savoy Walmart");
+  REQUIRE(path.path_[2].getLabel() == "Yellow 1");
+
+  path = find_path(g,"Round Barn Road","Washington and Lierman"); // while all start and end are on one bus, faster to hop between buses
+  REQUIRE(path.weight_ == 34);
+  REQUIRE(path.path_.size() == 4);
+  REQUIRE(path.path_[0].source == "Washington and Lierman");
+  REQUIRE(path.path_[0].dest == "Florida and Philo");
+  REQUIRE(path.path_[0].getLabel() == "Green 5");
+
+  REQUIRE(path.path_[1].source == path.path_[0].dest);
+  REQUIRE(path.path_[1].dest == "Lincoln Square");
+  REQUIRE(path.path_[1].getLabel() == "Red 2");
+
+  REQUIRE(path.path_[2].source == path.path_[1].dest);
+  REQUIRE(path.path_[2].dest == "Illinois Terminal");
+  REQUIRE(path.path_[2].getLabel() == "Orange 6");
+
+  REQUIRE(path.path_[3].source == path.path_[2].dest);
+  REQUIRE(path.path_[3].dest == "Round Barn Road");
+  REQUIRE(path.path_[3].getLabel() == "Green 5");
 }
