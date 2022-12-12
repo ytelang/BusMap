@@ -51,7 +51,7 @@ To do this, we first created CSV files with data on the buses, including their l
 
 We then parsed this data in our program and created an undirected, weighted Graph structure with bus stops as vertices and buses as edges. Each edge had its respective weight as described above. This would then allow us to use our proposed algorithm (Dijkstra's) to find the best path to take between the two inputted stops.
 
-Using our graph containing all of the parsed data about the buses, we then implemented Dijkstra's algorithm to find the shortest path between two inputted stops. We also compressed this path to account for multiple stops on the same bus, and then store it in a Path object, which contains a vector of the stops and the estimated weight (time) it would take to get from one stop to another.
+Using our graph containing all of the parsed data about the buses, we then implemented Dijkstra's algorithm to find the shortest path between two inputted stops. We also compressed this path to account for multiple stops on the same bus, and then stored it in a Path object, which contains a vector of the stops and the estimated weight (time) it would take to get from one stop to another.
 
 Next, using the parsed data about the stop locations on a map of the Champaign area, we created a PNG containing this data and highlighted the stops that the most optimal path takes on the map (Graphic Output of Graph algorithm). Finally, we used BFS to find the shortest path between the stops on the map, then highlighting the path that would be taken to get from one to another.
 
