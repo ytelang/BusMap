@@ -30,6 +30,11 @@ int main(int argc, char** argv) {
     }
     end = argv[1];
     start = argv[2];
+    if(start == end)
+    {
+        std::cout << "Start is the same as end, you are already there" << std::endl;
+        return 0;
+    }
     std::string file_out = "../Data/MapPath.png";
     if(argc == 4)
     {
