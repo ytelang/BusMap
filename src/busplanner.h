@@ -11,8 +11,10 @@
 #include <queue>
 #include <unordered_set>
 
+#include "cs225/PNG.h"
+#include "cs225/HSLAPixel.h"
 #include "utils.h"
-#include "adj_list.h"
+#include "Graph.h"
 typedef std::vector<std::vector<std::string>> V2D;
 
 using std::vector;
@@ -40,3 +42,9 @@ auto find_path(Graph g, Vertex start, Vertex end) -> Path;
 auto compress_path(std::vector<Edge> path) -> Path;
 
 std::ostream& operator<<(std::ostream& os, const Path& path);
+
+cs225::PNG draw_path(const std::string& filename, Path path, std::unordered_map<std::string, std::pair<int,int>> coordinates, size_t r);
+
+void draw_cell(cs225::PNG& img, std::pair<int,int> coord, size_t r, const cs225::HSLAPixel& color);
+
+auto BFS(cs225::PNG& img, std::pair<int,int> start, std::pair<int,int> end, size_t r, const cs225::HSLAPixel& color) -> void;

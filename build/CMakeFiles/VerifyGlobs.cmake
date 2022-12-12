@@ -36,7 +36,7 @@ endif()
 # src_sources at src/CMakeLists.txt:5 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/cs225/final_project/src/*.cpp")
 set(OLD_GLOB
-  "/workspaces/cs225/final_project/src/adj_list.cpp"
+  "/workspaces/cs225/final_project/src/Graph.cpp"
   "/workspaces/cs225/final_project/src/busplanner.cpp"
   "/workspaces/cs225/final_project/src/utils.cpp"
   )

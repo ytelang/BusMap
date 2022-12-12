@@ -1,6 +1,5 @@
 #include "busplanner.h"
 #include "utils.h"
-#include "adj_list.h"
 
 #include <iostream>
 #include <algorithm>
@@ -45,7 +44,7 @@ int main(int argc, char** argv) {
     }
     
     auto path = find_path(g,start,end);
-
+    auto img = draw_path("../Data/Map.png",path,coords, 6);
     std::cout << path << std::endl;
     return path.weight_;
 }

@@ -8,8 +8,6 @@
 #include <vector>
 #include <string>
 
-#include "cs225/PNG.h"
-#include "cs225/HSLAPixel.h"
 #include "busplanner.h"
 
 using std::string;
@@ -241,4 +239,114 @@ auto compress_path(std::vector<Edge> path) -> Path
         i--;
     }
     return rt;
+}
+
+cs225::PNG draw_path(const std::string& filename, Path path, std::unordered_map<std::string, std::pair<int,int>> coordinates, size_t r)
+{
+    cs225::PNG rt;
+    rt.readFromFile(filename);
+    std::pair<int,int> start = coordinates[path.path_[0].source];
+    std::pair<int,int> end = coordinates[path.path_[path.path_.size()-1].dest];
+    cs225::HSLAPixel red_pixel(0,1,0.5);
+    cs225::HSLAPixel green_pixel(40,0.93,0.57);
+    draw_cell(rt,start,r,red_pixel);
+    //draw_cell(rt,end,6);
+    for(Edge edge : path.path_)
+    {
+        BFS(rt, coordinates[edge.source], coordinates[edge.dest],r/2,red_pixel);
+        draw_cell(rt, coordinates[edge.dest], r, red_pixel);
+    }
+    rt.writeToFile("../Data/MapPath.png");
+    return rt;
+}
+
+void draw_cell(cs225::PNG& img, std::pair<int,int> coord, size_t r, const cs225::HSLAPixel& color)
+{
+    int x = coord.first;
+    int y = coord.second;
+    int r_sq = r*r;
+    for(size_t x_cur = x-r; x_cur <= x+r; x_cur++)
+    {
+        int x_diff = x-x_cur;
+        for(size_t y_cur = y-r; y_cur <= y+r; y_cur++)
+        {
+            if(x_cur < 0 || y_cur < 0 || x_cur >= img.width() || y_cur >= img.height())
+            {
+                continue;
+            }
+            int y_diff = y-y_cur;
+            if(x_diff * x_diff + y_diff * y_diff > r_sq)
+            {
+                continue;
+            }
+            cs225::HSLAPixel& current = img.getPixel(x_cur,y_cur);
+            current = color;
+        }
+    }
+}
+
+auto BFS(cs225::PNG& img, std::pair<int,int> start, std::pair<int,int> end, size_t r, const cs225::HSLAPixel& color) -> void
+{
+    std::queue<int> q;
+    int width = img.width();
+    int height = img.height();
+    int max_pixel = width*height;
+    q.push(start.second*width+start.first);
+    int end_pixel = end.second*width + end.first;
+    std::unordered_map<int, int> pathways; // key is y*width+x
+    std::unordered_set<int> visited;
+    while(!q.empty())
+    {
+        auto current = q.front();
+        q.pop();
+        //std::cout << current % width << "," << current/width << "\n";
+        if(current == end_pixel)
+        {
+            break;
+        }
+        if(visited.find(current) != visited.end())
+        {
+            continue;
+        }
+        visited.insert(current);
+        // key is any cell, value is the cell that got us to the key
+        int right = current+1;
+        int left = current-1;
+        int up = current+width;
+        int down = current-width;
+        if(right >= 0 && right < max_pixel)
+            if(visited.find(right) == visited.end())
+            {
+                pathways.insert(std::make_pair(right,current));
+                q.push(right);
+            }
+        if(left >= 0 && left < max_pixel)
+            if(visited.find(left) == visited.end())
+            {
+                pathways.insert(std::make_pair(left,current));
+                q.push(left);
+            }
+        if(up >= 0 && up < max_pixel)
+            if(visited.find(up) == visited.end())
+            {
+                pathways.insert(std::make_pair(up,current));
+                q.push(up);
+            }
+        if(down >= 0 && down < max_pixel)
+            if(visited.find(down) == visited.end())
+            {
+                pathways.insert(std::make_pair(down,current));
+                q.push(down);
+            }
+    }
+    int current = end_pixel;
+    int start_pixel = start.second*width + start.first;
+    int count = 0;
+    while(current != start_pixel)
+    {
+        if(count % (r << 2) == 0)
+            draw_cell(img,std::make_pair(current % width, current / width),r,color);
+        current = pathways[current];
+        count++;
+    }
 }
