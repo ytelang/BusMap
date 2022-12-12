@@ -1,5 +1,5 @@
 ## Leading Question 
-Our project consists of finding the fastest path from point A to point B using the CUMTD bus system. Users will be able to input their starting and end locations, and the best route from the two locations will be displayed. We will do this by making an weighted adjacency matrix of the bus routes, using BFS to find the shortest path between 2 nodes in the graph that the adjacency matrix represents, and then using Dijkstra's search algorithm and the A* search algorithm (with a search heuristic to improve optimality, where if the current path is worse than the best path already found, it is disregarded) to find and store the best path to take. Using these 3 algorithms, we will compute, store, and output the fastest path between the two inputted locations.
+Our project consists of finding the fastest path from point A to point B using the CUMTD bus system. Users will be able to input their starting and end locations, and the best route from the two locations will be displayed. We will do this by making an weighted adjacency matrix of the bus routes, using BFS to find the shortest path between 2 nodes in the graph that the adjacency matrix represents, and then using Dijkstra's search algorithm and the Graphic Output of Graph algorithm (where we project onto the map of where the bus routes are going based on our data) to find and store the best path to take. Using these 3 algorithms, we will compute, store, and output the fastest path between the two inputted locations.
 
 ## Dataset Acquisition
 We will use the publicly available data of the bus routes at https://mtd.org/maps-and-schedules/routes/.  We will be using the "currently running routes" on weekdays (which are the same for every weekday), which means there are 20 buses (Yellow, Red, Lavender, Blue, etc) and their routes that we will use.
@@ -17,7 +17,7 @@ To store the data of the buses and routes, we will use an adjacency matrix made 
 
 ## Algorithm 
 
- The expected inputs for our algorithm are 2 locations, and the output will be found using the adjacency matrix that contains the buses and bus routes and the following algorithms. We will use BFS to find the shortest path between 2 nodes in the graph that the adjacency matrix represents, and then use Dijkstra's search algorithm and the A* search algorithm (with a search heuristic to improve optimality, where if the current path is worse than the best path already found, it is disregarded) to find and store the best path to take. The output will be a combination of buses/bus routes as well as when walking between locations is required, which will be displayed as text to the user. This could also be displayed as a graph or an image. The Big O estimate of our algorithm related to time will be O(n^2), where n is the distance (number of nodes) between the start and target location. The space complexity will also be O(n^2), because we will have traversed n nodes and their neighbors in the graph to get our output (the best path to take). 
+ The expected inputs for our algorithm are 2 locations, and the output will be found using the adjacency matrix that contains the buses and bus routes and the following algorithms. We will use BFS to find the shortest path between 2 nodes in the graph that the adjacency matrix represents, and then use Dijkstra's search algorithm and the the Graphic Output of Graph algorithm (where we project onto the map based on data) to find and store the best path to take. The output will be a combination of buses/bus routes as well as when walking between locations is required, which will be displayed as text to the user. This could also be displayed as a graph or an image. The Big O estimate of our algorithm related to time will be O(n^2), where n is the distance (number of nodes) between the start and target location. The space complexity will also be O(n^2), because we will have traversed n nodes and their neighbors in the graph to get our output (the best path to take). 
 
 ## Timeline
 
@@ -27,6 +27,6 @@ Week 2: Resubmit project proposal, start data acquisition and processing of buse
 
 Week 3: Finish creation of graph with data, work on BFS to find shortest path between 2 nodes of the graph.
 
-Week 4: Work on Dijkstra's algorithm and the A* search algorithm to find shortest path between 2 locations and store data.
+Week 4: Work on Dijkstra's algorithm and the Graphic Output of Graph algorithm to find shortest path between 2 locations and store data.
 
-Week 5: Finish Dijkstra's algorithm and A* search algorithm to store/output best path between two inputted locations, record final presentation and write written report.
+Week 5: Finish Dijkstra's algorithm and the Graphic Output of Graph algorith to store/output best path between two inputted locations, record final presentation and write written report.
