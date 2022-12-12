@@ -12,7 +12,7 @@ using std::vector;
 using std::string;
 
 int main(int argc, char** argv) {
-    V2D data = csvToVector("/workspaces/cs225/final_project/BusDataWeighted.csv"); // change this to the correct file path
+    V2D data = csvToVector("../Data/BusDataWeighted.csv"); // change this to the correct file path
     /*
     for (auto v : data) {
         //vector<string> vec;
