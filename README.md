@@ -48,7 +48,7 @@ Using our graph containing all of the parsed data about the buses, we then imple
 
 Next, using the parsed data about the stop locations on a map of the Champaign area, we created a PNG containing this data and highlighted the stops that the most optimal path takes on the map (Graphic Output of Graph algorithm). Finally, we used BFS to find the shortest path between the stops on the map, then highlighting the path that would be taken to get from one to another. This map is then outputted to a PNG that can be displayed to the user.
 
-Finally, throughout this process, we have beem testing each component to make sure the data and results are accurate. This includes having assertions for the parsed data, comparing the output of our path finding algorithm to our manually calculated path (using multiple inputs), and confirming that the drawn paths match up on the outputted PNG.
+Finally, throughout this process, we have been testing each component to make sure the data and results are accurate. This includes having assertions for the parsed data, comparing the output of our path finding algorithm to our manually calculated path (using multiple inputs), and confirming that the drawn paths match up on the outputted PNG.
 
 
 <!--- Github Organization --->
@@ -65,8 +65,6 @@ The `tests` folder contains all of our created test cases as described in our de
 The `src` folder contains the majority of our code, where we have our graph structure in `Graph.h`, and our functions to parse data, build/compress our path, and output the path to a PNG in `busplanner.h`. This folder also contains the provided `utils.h`, which lets us easily read from files, split by string, and trim strings.
 
 The `entry` folder contains `main.cpp`, which is where we use the functions and structures that we created to parse the data, specify user input, build and compress the path, and write to the outputted PNG.
-
-The `build` and `.vscode` folder contain CMake build files that are created when building and running the program. Instructions to do this are in the following section. 
 
 
 
