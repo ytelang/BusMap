@@ -241,7 +241,7 @@ auto compress_path(std::vector<Edge> path) -> Path
     return rt;
 }
 
-cs225::PNG draw_path(const std::string& filename, Path path, std::unordered_map<std::string, std::pair<int,int>> coordinates, size_t r)
+cs225::PNG draw_path(const std::string& filename, const std::string& file_out, Path path, std::unordered_map<std::string, std::pair<int,int>> coordinates, size_t r)
 {
     cs225::PNG rt;
     rt.readFromFile(filename);
@@ -256,7 +256,7 @@ cs225::PNG draw_path(const std::string& filename, Path path, std::unordered_map<
         BFS(rt, coordinates[edge.source], coordinates[edge.dest],r/2,red_pixel);
         draw_cell(rt, coordinates[edge.dest], r, red_pixel);
     }
-    rt.writeToFile("../Data/MapPath.png");
+    rt.writeToFile(file_out);
     return rt;
 }
 

@@ -22,14 +22,19 @@ int main(int argc, char** argv) {
     vector<Vertex> vertices = g.getVertices();
     Vertex end; // flip user start and end since we output in reverse order
     Vertex start;
-    if(argc != 3)
+    if(argc != 3 && argc != 4)
     {
         printVector(vertices);
-        std::cout << "Input ./main 'Start Location' 'End Location'" << std::endl;
+        std::cout << "Input ./main 'Start Location' 'End Location' 'Output Location(Optional)'" << std::endl;
         return 0;
     }
     end = argv[1];
     start = argv[2];
+    std::string file_out = "../Data/MapPath.png";
+    if(argc == 4)
+    {
+        file_out = argv[3];
+    }
     if(std::find(vertices.begin(),vertices.end(),end) == vertices.end())
     {
         printVector(vertices);
@@ -44,7 +49,7 @@ int main(int argc, char** argv) {
     }
     
     auto path = find_path(g,start,end);
-    auto img = draw_path("../Data/Map.png",path,coords, 6);
+    auto img = draw_path("../Data/Map.png",file_out,path,coords, 6);
     std::cout << path << std::endl;
     return path.weight_;
 }
