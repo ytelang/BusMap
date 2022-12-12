@@ -79,7 +79,7 @@ To run the program:
 3. `cd` to the `BusMap` directory.
 4. Run `mkdir build`, `cd build`, and `cmake ..` to build the project (same process as CS225 MPs and Labs).
 5. Run `make` to compile all files.
-6. Run the program by inputting `./main "Start location" "End location" "Output file location"`. If no output file location is specified, the outputted PNG will be in `../Data/MapPath.png`. The possible start and end bus stop locations are displayed in the leftmost column in the `../Data/BusCoordinates.csv` file (they are also displayed when running the program if a location is invalid).
+6. Run the program by inputting `./main "Start location" "End location" "Output file location"`. If no output file location is specified, the outputted PNG will be in `../Data/MapPath.png`. The possible start and end bus stop locations are displayed in the leftmost column in the `../Data/BusCoordinates.csv` file (they are also displayed when running the program if a location is invalid). If either start/end locations are not valid, the program will terminate and will give you a list of valid stops.
 7. Run the tests by running `./test`.
 
 <img src = "./Data/Map.png">
