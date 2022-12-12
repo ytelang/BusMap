@@ -40,6 +40,10 @@ std::string TrimLeft(const std::string & str) {
 
 std::string Trim(const std::string & str) {
     std::string tmp = str;
+    if(str.size() == 0)
+    {
+        std::cout << "EEEEEEEEEEEEEEEEE\n";
+    }
     return TrimLeft(TrimRight(str));
 }
 

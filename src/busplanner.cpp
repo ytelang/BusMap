@@ -104,6 +104,11 @@ Graph make_adj_list(const V2D &routes) {
 
 auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>
 {
+    if(start == end)
+    {
+        std::vector<Edge> rt;
+        return rt;
+    }
     std::unordered_set<Vertex> visited;
     visited.insert(start);
     size_t num_vert = g.getVertices().size();
@@ -157,6 +162,10 @@ auto find_path(Graph g, Vertex start, Vertex end) -> std::vector<Edge>
 auto compress_path(std::vector<Edge> path) -> std::vector<Edge>
 {
     std::vector<Edge> rt;
+    if(path.empty())
+    {
+        return rt;
+    }
     std::string previous_bus = path[0].getLabel();
     for(size_t i = 0; i < path.size(); i++)
     {

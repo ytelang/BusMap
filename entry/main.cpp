@@ -90,22 +90,22 @@ int main(int argc, char** argv) {
     }    
     std::cout << "\n\n\n\n\n\n\n";
     */
-    
     auto path = find_path(g,start,end);
     auto compressed = compress_path(path);
     int overall_weight = 0;
+    /*
     for(auto edge : path)
     {
         std::cout << g.getEdgeLabel(edge.source,edge.dest) << " | from " << edge.source << " to " << edge.dest << " with weight " << g.getEdgeWeight(edge.source, edge.dest) << std::endl;
         overall_weight += g.getEdgeWeight(edge.source, edge.dest);
     }
     std::cout << overall_weight << "\n\n\n";
-    overall_weight = 0;
+    */
     for(auto edge : compressed)
     {
-        std::cout << edge.getLabel() << " | from " << edge.source << " to " << edge.dest << " with weight " << edge.getWeight() << std::endl;
+        std::cout << edge.getLabel() << " from " << edge.source << " to " << edge.dest << " with weight " << edge.getWeight() << std::endl;
         overall_weight += edge.getWeight();
     }
-    std::cout << overall_weight << "\n";
+    std::cout << "Overall Travel Time (Est): " << overall_weight << "\n";
     return 0;
 }
