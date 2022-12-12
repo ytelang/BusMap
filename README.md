@@ -1,6 +1,6 @@
 <div align = "center">
   
-  <img src = "images/Run4.png">
+  <img src = "./Data/Map.png">
   
   <p align = "center">
     <h1>BusMap</h1>
@@ -27,11 +27,7 @@
       <a href = "#github-organization">GitHub Organization</a>
     </li>
     <li>
-      <a href = "#getting-started">Getting Started</a>
-      <ul>
-        <li><a href = "#running-instructions">Running Instructions</a></li>
-        <li><a href = "#misc-notes">Misc. Notes</a></li>
-      </ul>
+      <a href = "#running-instructions">Running Instructions</a>
     </li>
   </ol>
 </details>
@@ -74,17 +70,13 @@ The `entry` folder contains `main.cpp`, which is where we use the functions and 
 The `build` and `.vscode` folder contain CMake build files that are created when building and running the program. Instructions to do this are in the following section. 
 
 <!--- Provides reproducible installation and running instructions --->
-## Getting Started
-### Running Instructions
+## Running Instructions
+
+To run the program:
 1. Download/Clone the repository to your local machine.
 2. Open the repository using the standard CS225 Dockerfile.
 3. `cd` to the `BusMap` directory.
 4. Run `mkdir build`, `cd build`, and `cmake ..` to build the project (same process as CS225 MPs and Labs).
 5. Run `make` to compile all files.
-6. Run the program by inputting `./main "Start location" "End location" "Output file location"`. If no output file location is specified, the outputted PNG will be in `../Data/MapPath.png`. 
-
-The possible start and end bus stop locations are displayed in the leftmost column in the `../Data/BusCoordinates.csv` file (they are also displayed when running the program if a location is invalid).
-
-
-### Misc. Notes
-
+6. Run the program by inputting `./main "Start location" "End location" "Output file location"`. If no output file location is specified, the outputted PNG will be in `../Data/MapPath.png`. The possible start and end bus stop locations are displayed in the leftmost column in the `../Data/BusCoordinates.csv` file (they are also displayed when running the program if a location is invalid).
+7. Run the tests by running `./test`.
