@@ -78,27 +78,13 @@ The `build` and `.vscode` folder contain CMake build files that are created when
 ### Running Instructions
 1. Download/Clone the repository to your local machine.
 2. Open the repository using the standard CS225 Dockerfile.
-3. 
+3. `cd` to the `BusMap` directory.
+4. Run `mkdir build`, `cd build`, and `cmake ..` to build the project (same process as CS225 MPs and Labs).
+5. Run `make` to compile all files.
+6. Run the program by inputting `./main "Start location" "End location" "Output file location"`. If no output file location is specified, the outputted PNG will be in `../Data/MapPath.png`. 
 
+The possible start and end bus stop locations are displayed in the leftmost column in the `../Data/BusCoordinates.csv` file (they are also displayed when running the program if a location is invalid).
 
 
 ### Misc. Notes
-- How To Win: Complete all of the objectives before you die.
 
-- Screen
-  - Objectives are at the top left (they will turn green once you complete them)
-  - Current Health is at the bottom left
-  - Score is at top right
-
-- Movement
-  - WASD (or arrow keys) + mouse to move
-  - Left click on mouse to shoot
-  - Space bar to jump
-  - Press "e" to interact with challenges
-  - Upon a win, press "r" to restart game
-  - Upon a loss, simply wait and the game will restart itself
-
-- Interface
-  - Enemies are the moving blocks. Everytime a block rams into you, you will lose some health
-  - Destroy enemies by shooting them. Killing them will increase your score
-  - Destroying one moving blocks will respawn 2 new moving blocks
