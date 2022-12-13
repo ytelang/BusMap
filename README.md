@@ -7,7 +7,7 @@
   </p>
   
   <p align = "center">
-    <a href = "https://docs.google.com/document/d/1IUf3dyW1TnD_ucja0UIhg7Jr_0muf89ayezwk0SF0hw/edit?usp=sharing">Presentation</a>
+    <a href = "https://drive.google.com/file/d/1CLIBh1Oy-qlJorXU3sJebJuEvW4xdg1Z/view?usp=sharing">Presentation</a>
   </p>
 </div>
 
@@ -60,7 +60,7 @@ The `src` folder contains the majority of our code, where we have our graph stru
 
 The `entry` folder contains `main.cpp`, which is where we use the functions and structures that we created to parse the data, specify user input, build and compress the path, and write to the outputted PNG.
 
-Our presentation is linked at the top of this README.
+Our presentation is linked at the top of this README (you must be signed in to your Google @ Illinois account to view the file).
 
 <!--- Provides reproducible installation and running instructions --->
 ## Running Instructions
