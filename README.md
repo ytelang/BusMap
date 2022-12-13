@@ -54,7 +54,7 @@ Finally, throughout this process, we have been testing each component to make su
 <!--- Github Organization --->
 ## GitHub Organization
 
-The `Documents` folder contains our project proposal and team contract.
+The `Documents` folder contains our project proposal, team contract, and written report.
 
 The `Data` folder contains our created CSVs and the base image of the map that we use to display the path.
 
