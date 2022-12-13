@@ -1,7 +1,3 @@
-/**
- * @file sketchify.cpp
- * Implementation of the sketchify function.
- */
 #pragma GCC diagnostic ignored "-Wuninitialized"
 #include <cstdlib>
 #include <cmath>
@@ -34,10 +30,6 @@ V2D csvToVector(const std::string & filename){
 
     int splitNum = SplitString(str, '\n', split);
 
-    //for (auto e : split) {
-    //    std::cout << "Original split: " << e << std::endl;
-    //}
-
     for (int i = 0; i < splitNum; i++) {
         vector<string> splitStrings;
         int splitStringsNum = SplitString(split[i], ',', splitStrings);
@@ -49,7 +41,6 @@ V2D csvToVector(const std::string & filename){
                 break;
             }
             e = Trim(e);
-            //std::cout << "Final split num: " << i << " " << e << std::endl;
         }
         if(add)
             rtn.push_back(splitStrings);
@@ -91,7 +82,6 @@ auto get_bus_routes(const V2D& data) -> V2D
         for (size_t i = 0; i < data.size(); i++) {
             
             if (data[i][j] != "NA") {
-                //std::cout << data[i][j] << " , length is: " << data[i][j].length() << std::endl;
                 v.push_back(data[i][j]);
             }
             
@@ -202,7 +192,6 @@ auto find_path(Graph g, Vertex start, Vertex end) -> Path
         rt.weight_ += g.getEdgeWeight(current,backtrack);
         current = backtrack;
     }
-    //rt = compress_path(rt);
     rt = compress_path(rt.path_);
     return rt;
 }
@@ -250,7 +239,6 @@ cs225::PNG draw_path(const std::string& filename, const std::string& file_out, P
     cs225::HSLAPixel red_pixel(0,1,0.5);
     cs225::HSLAPixel green_pixel(40,0.93,0.57);
     draw_cell(rt,start,r,red_pixel);
-    //draw_cell(rt,end,6);
     for(Edge edge : path.path_)
     {
         BFS(rt, coordinates[edge.source], coordinates[edge.dest],r/2,red_pixel);
@@ -299,7 +287,6 @@ auto BFS(cs225::PNG& img, std::pair<int,int> start, std::pair<int,int> end, size
     {
         auto current = q.front();
         q.pop();
-        //std::cout << current % width << "," << current/width << "\n";
         if(current == end_pixel)
         {
             break;

@@ -1,8 +1,3 @@
-/**
- * @file sketchify.h
- * Declaration of the sketchify function.
- */
-
 #pragma once
 
 #include <string>
